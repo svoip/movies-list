@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+{% block content %}
+  <div class="top-container">
+    <h2>Welcome to Movie listing app<h2>
+    <h3>You can edit and add movies<h3>
+
+    <div class="container">
+
+	<a style="float: right;" class="action-button shadow animate yellow" onclick="addRow()">Add new</a>
+	<br><br>
+	<table id='moviesTable'>
+		{% for movie in movies_list %}
+        <tr class="movie-row">
+        	<td data-type='id'>{{movie['id']}}</td>
+        	<td class="toggle-editable" data-type='title'>{{movie['title']}}</td>
+        	<td class="toggle-editable" data-type='year'>{{movie['year']}}</td>
+        	<td class="toggle-editable" data-type='description'>{{movie['description']}}</td>
+        	<td class="toggle-editable" data-type='genres'>{{movie['genres']}}</td>
+        	<td><a class="action-button shadow animate yellow" onclick="editRow(this)">Edit</a></td>
+        </tr>
+        {% endfor %}
+
+	</table>
+  <div id="errorDiv"></div>
+</div>
+</div>
+{% endblock %}

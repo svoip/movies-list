@@ -1,0 +1,100 @@
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #444;
+}
+
+header {
+  background-color: #2B2B2B;
+  height: 35px;
+  width: 100%;
+  opacity: .9;
+  margin-bottom: 10px;
+}
+
+.container {
+  width: 940px;
+  margin: 0 auto;
+}
+
+div.top-container {
+  padding: 10px 0 30px 0;
+  background-color: #eeeeee;
+  -webkit-border-radius: 6px;
+     -moz-border-radius: 6px;
+          border-radius: 6px;
+}
+
+h2 {
+  font-size: 3em;
+  margin-top: 40px;
+  text-align: center;
+  letter-spacing: -2px;
+}
+
+h3 {
+  font-size: 1.7em;
+  font-weight: 100;
+  margin-top: 30px;
+  text-align: center;
+  letter-spacing: -1px;
+  color: #999;
+}
+
+table{
+  padding: 0px 20px 0px 20px;
+  font-size: 26px;
+}
+
+tr {
+  border-top: 1px solid #C1C3D1;
+  border-bottom-: 1px solid #C1C3D1;
+  color:#666B85;
+  font-size:16px;
+  font-weight:normal;
+  text-shadow: 0 1px 1px rgba(256, 256, 256, 0.1);
+}
+
+td {
+  background:#FFFFFF;
+  padding:20px;
+  text-align:left;
+  vertical-align:middle;
+  font-weight:300;
+  font-size:18px;
+  text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
+  border-right: 1px solid #C1C3D1;
+}
+
+.action-button{
+  position: relative;
+  padding: 8px 40px;
+  margin: 0px 10px 10px 0px;
+  float: left;
+  border-radius: 10px;
+  font-size: 16px;
+  color: #FFF;
+  text-decoration: none;
+}
+
+.yellow{
+  background-color: #F2CF66;
+  border-bottom: 2px solid #D1B358;
+  text-shadow: 0px -2px #D1B358;
+}
+.green {
+  background-color: green;
+  border-bottom: 0px;
+}
+tr .editable{
+  font-style: italic;
+  background-color: #eeeeee;
+  border:1px solid gray;
+}
+
+#errorDiv{
+  font-size: 20px;
+  margin-top: 4px;
+}
