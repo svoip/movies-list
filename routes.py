@@ -7,7 +7,7 @@ from pprint import pprint
 
 app = Flask(__name__)
 
-# static content
+# static initial content
 movies_list = [
     {
         'id': "1",
@@ -49,9 +49,6 @@ def edit_movie():
     movie_being_edited['title'] = json['title']
     movie_being_edited['description'] = json['description']
     movie_being_edited['year'] = json['year']
-    
-    print(json['genres'])
-
     genres = []
     for g in json['genres']:
         genres.append(str(g))
@@ -73,16 +70,18 @@ def edit_movie():
         return jsonify({'movie': movie_being_edited}), 201
 
 
-# helper
 def next_movie_id():
     seq = [m['id'] for m in movies_list]
     max_id = max(seq)
     max_id = int(max_id) + 1
     return str(max_id)
 
+def ordered_list_by_key(a_list, a_key):
+    return sorted(movies_list, key=lambda k: a_key) 
+
 @app.route('/')
 def home():
-  return render_template('home.html', movies_list = movies_list)
+  return render_template('home.html', movies_list = ordered_list_by_key(movies_list,'id'))
 
 
 if __name__ == '__main__':

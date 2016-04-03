@@ -50,14 +50,27 @@ function editingRowsDone(rowElements){
 function submitMovie(rowElements){
     // read off values for the current movie
     var movieData = {};
+    var postMovieToRemote = true;
     forEach(rowElements, function (el) {
-      debugger
-      movieData[$(el).attr('data-type')] = $(el).text();
+      
+      var dataType = $(el).attr('data-type');
+      var dataValue = $(el).text();
+      if (dataType == 'genres'){
+        // wrap in array
+        dataValue = [dataValue];
+      }
+
+      movieData[dataType] = dataValue;
+      if (dataValue.length < 1){
+        postMovieToRemote = false;
+      }
     });
-    movieData = JSON.stringify(movieData);
     
-    console.log(movieData);
-  
+    if (postMovieToRemote == false){
+      logMessage('Fill in all the fields before saving');
+      return;
+    }
+    movieData = JSON.stringify(movieData);
 
     $.ajax({
       url: '/movies/api/v1.0/edit',

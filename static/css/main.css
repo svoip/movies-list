@@ -96,5 +96,7 @@ tr .editable{
 
 #errorDiv{
   font-size: 20px;
+  font-weight: bold;
   margin-top: 4px;
+  color: orange;
 }
