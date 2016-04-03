@@ -41,17 +41,23 @@ def get_movies():
 # insert a new or edit an existing movie
 @app.route('/movies/api/v1.0/edit', methods=['POST'])
 def edit_movie():
-
     json = request.get_json()
-
     if not json or not 'title' in json:
-        abort(400) # bad request
+        abort(400)
 
     movie_being_edited = {}
     movie_being_edited['title'] = json['title']
     movie_being_edited['description'] = json['description']
     movie_being_edited['year'] = json['year']
+    
+    print(json['genres'])
 
+    genres = []
+    for g in json['genres']:
+        genres.append(str(g))
+    movie_being_edited['genres'] = genres
+    
+    # editing an existing movie
     if json['id']:
         movie_being_edited['id'] = json['id']
         for movie in movies_list:
@@ -60,10 +66,12 @@ def edit_movie():
 
         movies_list.append(movie_being_edited)
         return jsonify({'movie': movie_being_edited}), 200
+    # creating new movie item
     else:
         movie_being_edited['id'] = next_movie_id()
         movies_list.append(movie_being_edited)
         return jsonify({'movie': movie_being_edited}), 201
+
 
 # helper
 def next_movie_id():

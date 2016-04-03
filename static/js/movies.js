@@ -10,7 +10,7 @@ function addRow(){
       return;
     }
 
-    var clonedRow = $('#moviesTable').children().children()[0];
+    var clonedRow = $('#moviesTable').children().children()[1];
     clonedRow = $(clonedRow).clone();
     $(clonedRow).find('td[data-type]').text('');
     $('#moviesTable').append(clonedRow);
@@ -51,9 +51,13 @@ function submitMovie(rowElements){
     // read off values for the current movie
     var movieData = {};
     forEach(rowElements, function (el) {
+      debugger
       movieData[$(el).attr('data-type')] = $(el).text();
     });
     movieData = JSON.stringify(movieData);
+    
+    console.log(movieData);
+  
 
     $.ajax({
       url: '/movies/api/v1.0/edit',
@@ -64,7 +68,7 @@ function submitMovie(rowElements){
       success: function(data){
         var _rowElements = this;
         var _data = data['movie'];
-
+        console.log(_data);
         forEach(_rowElements, function (el) {
           $(el).text(_data[$(el).attr('data-type')]);
         });
